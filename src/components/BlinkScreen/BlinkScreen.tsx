@@ -44,7 +44,6 @@ export default function BlinkScreen() {
             <ConsentPopup
                 isOpen={showConsent}
                 onClose={() => setShowConsent(false)}
-                onConfirm={() => setShowConsent(true)}
             />
         </div>
     );

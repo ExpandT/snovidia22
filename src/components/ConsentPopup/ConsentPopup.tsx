@@ -1,12 +1,14 @@
 import './ConsentPopup.css';
 import { useState } from 'react';
 import Checkbox from '../Checkbox/Checkbox.tsx';
+import { useNavigate } from 'react-router-dom';
 
-export default function ConsentPopup({ isOpen, onClose, onConfirm }: {
+export default function ConsentPopup({ isOpen, onClose }: {
     isOpen: boolean;
     onClose: () => void;
-    onConfirm: () => void;
 }) {
+    const navigate = useNavigate();
+
     const [allowMessages, setAllowMessages] = useState(false);
 
     if (!isOpen) return null;
@@ -31,7 +33,7 @@ export default function ConsentPopup({ isOpen, onClose, onConfirm }: {
                     <button className="consent-btn cancel" onClick={onClose}>
                         ОТМЕНА
                     </button>
-                    <button className="consent-btn confirm" onClick={() => onConfirm()}>
+                    <button className="consent-btn confirm" onClick={() => navigate('/profile-setup')}>
                         ДАЛЕЕ
                     </button>
                 </div>

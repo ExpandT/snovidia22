@@ -38,7 +38,7 @@ export default function LanguageGenderSelector() {
                 <div className="language-selector-container">
                     <h2 className="title">Выберите язык</h2>
                     <div className="options">
-                        {languages.map((language) => (
+                        {languages.map((language, index) => (
                             <>
                                 <div
                                     className="option"
@@ -53,7 +53,7 @@ export default function LanguageGenderSelector() {
 
                                 </div>
 
-                                <div className="divider"></div>
+                                {index !== languages.length - 1 && <div className="divider"></div>}
                             </>
                         ))}
                     </div>
@@ -64,6 +64,7 @@ export default function LanguageGenderSelector() {
                     </button>
 
                     <button
+                        className="next-btn"
                         onClick={handleNext}
                     >
                         ДАЛЕЕ
@@ -74,7 +75,7 @@ export default function LanguageGenderSelector() {
                     <div className="gender-selector-container">
                         <h2 className="title">Выберите ваш пол</h2>
                         <div className="options">
-                            {genders.map((gender) => (
+                            {genders.map((gender, index) => (
                                 <>
                                     <div
                                         key={gender}
@@ -88,12 +89,14 @@ export default function LanguageGenderSelector() {
                                             onChange={test}
                                         />
                                     </div>
-                                    <div className="divider"></div>
+
+                                    {index !== genders.length - 1 && <div className="divider"></div>}
                                 </>
                             ))}
                         </div>
 
                         <button
+                            className="next-btn"
                             onClick={handleNext}
                         >
                             ДАЛЕЕ
