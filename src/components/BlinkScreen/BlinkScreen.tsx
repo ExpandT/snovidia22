@@ -35,6 +35,8 @@ export default function BlinkScreen() {
     return (
         <div className={`blink-screen-container ${isBlinking ? 'blinking' : ''}`}>
             <button
+                style={{
+                }}
                 className="action-btn"
                 onClick={buttonText === 'Моргнуть' ? handleBlink : handleWakeUp}
             >

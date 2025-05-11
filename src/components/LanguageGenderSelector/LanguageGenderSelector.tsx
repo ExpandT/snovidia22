@@ -2,11 +2,14 @@ import { useState } from 'react';
 import './LanguageGenderSelector.css'
 import Checkbox from '../Checkbox/Checkbox.tsx';
 import walletIcon from '../../assets/wallet-solid.svg';
+import maleImage from '../../assets/girl-image.svg';
+import femaleImage from '../../assets/boy-image.svg';
 
 export default function LanguageGenderSelector() {
-    const [step, setStep] = useState<1 | 2>(1); // 1 - language selection, 2 - gender selection
+    const [step, setStep] = useState<1 | 2>(1);
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
     const [selectedGender, setSelectedGender] = useState<string | null>(null);
+    const [showGenderImage, setShowGenderImage] = useState(false);
 
     const languages = ['Русский', 'English', 'Espanol', 'Francaic', 'Deutch'];
     const genders = ['Женский', 'Мужской'];
@@ -17,11 +20,10 @@ export default function LanguageGenderSelector() {
 
     const handleGenderSelect = (gender: string) => {
         setSelectedGender(gender);
+        setShowGenderImage(true);
     };
 
-    const test = () => {
-
-    }
+    const test = () => {}
 
     const handleNext = () => {
         if (step === 1 && selectedLanguage) {
@@ -29,6 +31,7 @@ export default function LanguageGenderSelector() {
         } else if (step === 2 && selectedGender) {
             console.log('Selected language:', selectedLanguage);
             console.log('Selected gender:', selectedGender);
+            // Здесь можно добавить логику перехода дальше
         }
     };
 
@@ -50,9 +53,7 @@ export default function LanguageGenderSelector() {
                                         checked={language === selectedLanguage}
                                         onChange={test}
                                     />
-
                                 </div>
-
                                 {index !== languages.length - 1 && <div className="divider"></div>}
                             </>
                         ))}
@@ -72,6 +73,25 @@ export default function LanguageGenderSelector() {
                 </div>
             ) : (
                 <>
+                    {
+                        !showGenderImage && (
+                        <div className="gender-image-container">
+                                <img src={femaleImage} alt="maleImage" className="female-image" />
+                                <img src={maleImage} alt="maleImage" className="male-image" />
+
+                        </div>
+                    )
+                    }
+
+                    {
+                        showGenderImage && (
+                            <div className="gender-image-container">
+                                <img src={selectedGender === 'Мужской' ? maleImage : femaleImage} alt="maleImage" style={{
+                                    marginLeft: 0
+                                }} className="female-image" />
+                            </div>
+                        )
+                    }
                     <div className="gender-selector-container">
                         <h2 className="title">Выберите ваш пол</h2>
                         <div className="options">
@@ -82,14 +102,12 @@ export default function LanguageGenderSelector() {
                                         className="option"
                                         onClick={() => handleGenderSelect(gender)}
                                     >
-
                                         <Checkbox
                                             label={gender}
                                             checked={gender === selectedGender}
                                             onChange={test}
                                         />
                                     </div>
-
                                     {index !== genders.length - 1 && <div className="divider"></div>}
                                 </>
                             ))}
