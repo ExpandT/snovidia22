@@ -86,7 +86,7 @@ export default function LanguageGenderSelector() {
                     {
                         showGenderImage && (
                             <div className="gender-image-container">
-                                <img src={selectedGender === 'Мужской' ? maleImage : femaleImage} alt="maleImage" style={{
+                                <img src={selectedGender === 'Мужской' ? femaleImage : maleImage} alt="maleImage" style={{
                                     marginLeft: 0
                                 }} className="female-image" />
                             </div>
