@@ -2,7 +2,11 @@ import './ConsentPopup.css';
 import { useState } from 'react';
 import Checkbox from '../Checkbox/Checkbox.tsx';
 
-export default function ConsentPopup({ isOpen, onClose, onConfirm }) {
+export default function ConsentPopup({ isOpen, onClose, onConfirm }: {
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm: () => void;
+}) {
     const [allowMessages, setAllowMessages] = useState(false);
 
     if (!isOpen) return null;
@@ -27,7 +31,7 @@ export default function ConsentPopup({ isOpen, onClose, onConfirm }) {
                     <button className="consent-btn cancel" onClick={onClose}>
                         ОТМЕНА
                     </button>
-                    <button className="consent-btn confirm" onClick={() => onConfirm(allowMessages)}>
+                    <button className="consent-btn confirm" onClick={() => onConfirm()}>
                         ДАЛЕЕ
                     </button>
                 </div>

@@ -64,11 +64,7 @@ export default function LanguageGenderSelector() {
                     </button>
 
                     <button
-                        className={`next-button ${
-                            (step === 1 && !selectedLanguage) || (step === 2 && !selectedGender) ? 'disabled' : ''
-                        }`}
                         onClick={handleNext}
-                        disabled={(step === 1 && !selectedLanguage) || (step === 2 && !selectedGender)}
                     >
                         ДАЛЕЕ
                     </button>
@@ -98,11 +94,7 @@ export default function LanguageGenderSelector() {
                         </div>
 
                         <button
-                            className={`next-button ${
-                                (step === 1 && !selectedLanguage) || (step === 2 && !selectedGender) ? 'disabled' : ''
-                            }`}
                             onClick={handleNext}
-                            disabled={(step === 1 && !selectedLanguage) || (step === 2 && !selectedGender)}
                         >
                             ДАЛЕЕ
                         </button>

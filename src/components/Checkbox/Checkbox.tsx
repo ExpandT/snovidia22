@@ -1,6 +1,12 @@
 import './Checkbox.css';
 
-export default function Checkbox ({label, checked, onChange, disabled = false, labelColor = 'white'}) {
+export default function Checkbox ({label, checked, onChange, disabled = false, labelColor = 'white'}: {
+    label: string;
+    checked: boolean;
+    onChange: (event: boolean) => void;
+    disabled?: boolean;
+    labelColor?: string;
+}) {
     return (
         <label className="custom-checkbox">
             <input
